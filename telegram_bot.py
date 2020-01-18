@@ -6,17 +6,17 @@ import telebot
 from telebot import apihelper, types
 
 # создаем "заглушку" для Ростелекома
-proxies = {
-
-    # 'http': 'http://80.250.14.236:41737',
-    # 'https': 'http://80.250.14.236:41737',
-
-    'http': 'http://167.86.96.4:3128',
-    'https': 'http://167.86.96.4:3128',
-}
-
-# и применяем "заглушку"
-apihelper.proxy = proxies
+# proxies = {
+#
+#     'http': 'http://80.250.14.236:41737',
+#     'https': 'http://80.250.14.236:41737',
+#
+#     # 'http': 'http://167.86.96.4:3128',
+#     # 'https': 'http://167.86.96.4:3128',
+# }
+#
+# # и применяем "заглушку"
+# apihelper.proxy = proxies
 
 # подключаем бота, передава его токен
 python_course_bot = telebot.TeleBot('992535871:AAGK5ES4auVfkV4F4cB0Dq1HXMxlitMaqBE')
@@ -93,6 +93,14 @@ article_choice_list = []
 @python_course_bot.message_handler(commands=['start'])
 def send_hello(message):
     python_course_bot.reply_to(message, 'Hello!')
+
+
+@python_course_bot.message_handler(commands=['help'])
+def send_help(message):
+    help_string = 'Этот парсер выводит газетные статьи с rbc.ru' \
+                  ' и позволяет делать выбор статьи сначала по дате ее публикации,' \
+                  'затем выводит все статьи за выбранную дату'
+    python_course_bot.reply_to(message, help_string)
 
 # создаем обработчик команды rbc в боте
 @python_course_bot.message_handler(commands=['rbc'])
@@ -204,6 +212,7 @@ def article_process_step(message):
     python_course_bot.send_message(message.chat.id, url_for_read)
     # python_course_bot.send_message(message.chat.id, 'Текст статьи: ')
     # python_course_bot.send_message(message.chat.id, text_data_dict[url_for_read]['text'])
+
 
 
 # запускаем непрерывное процесс приема/отправки сообщений бота
