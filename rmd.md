@@ -1,11 +1,11 @@
 ## 1. Выполнение команд
 ### 1.1. Команда /start
 При выполнение команды старт бот выполнит функцию
-     ```
-     @python_course_bot.message_handler(commands=['start'])
-     def send_hello(message):
-     python_course_bot.reply_to(message, 'Hello!')
-     ```
+  ```
+  @python_course_bot.message_handler(commands=['start'])
+  def send_hello(message):
+  python_course_bot.reply_to(message, 'Hello!')
+  ```
  и выведет в чат пользователя приветственно сообщение.
  
  ### 1.2. Команда /help
