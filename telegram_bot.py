@@ -214,6 +214,7 @@ def article_process_step(message):
     # python_course_bot.send_message(message.chat.id, text_data_dict[url_for_read]['text'])
 
 
+
 # запускаем непрерывное процесс приема/отправки сообщений бота
 python_course_bot.polling()
 
